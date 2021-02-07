@@ -119,12 +119,12 @@ def Plattice():
                         S[g, 1] = numpy.imag(matrx[str(z)][index, g])   
                 R[:] = numpy.real(matrx[str(j)][index, 1*length:2*length])
             # R = numpy.ones(length)*100*numpy.sqrt(2/400/numpy.sqrt(3))
-            tri_list, V = get_power_triangulation(S, R)
+            tri_list, V = Laguerre.get_power_triangulation(S, R)
             # Compute the Voronoi cells
-            voronoi_cell_map = get_voronoi_cells(S, V, tri_list)
+            voronoi_cell_map = Laguerre.get_voronoi_cells(S, V, tri_list)
             # Display the result
-            edge_map = display(S, R, tri_list, voronoi_cell_map, 100)
-            elem_con, node_coord = cleanV1(100, V, edge_map)
+            edge_map = Laguerre.display(S, R, tri_list, voronoi_cell_map, 100)
+            elem_con, node_coord = Laguerre.cleanV1(100, V, edge_map)
             # ax.plot(S[:, 0], S[:, 1], 'r.', markersize = 2)
             for i in range(len(elem_con)):
                 ax.plot([node_coord[int(elem_con[i, 0]), 0], node_coord[int(elem_con[i, 1]), 0]], [node_coord[int(elem_con[i, 0]), 1], node_coord[int(elem_con[i, 1]), 1]], col[z], linewidth = 1)
