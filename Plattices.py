@@ -107,7 +107,7 @@ def Plattice():
             index = start + int(P_lattice[2+i, j])
             S = numpy.zeros((length, 2))
             R = numpy.zeros(length)
-            ax = fig4.add_subplot(spec4[math.floor(j), i])
+            ax = fig4.add_subplot(spec4[j, i])
             ax.axis('off')
             for z in range(2):
                 for g in range(len(S)):
