@@ -1,0 +1,5 @@
+DATA = {
+    'Lattice' : [],
+    'Plattice' : [],
+    'Perturb' : []
+}
