@@ -2,6 +2,7 @@ import numpy
 from numpy import linalg as la
 import Data
 import Tesselations
+import matplotlib.pyplot as plt
 def Plattice():
     data = Data.DATA
     lattice = numpy.array(Data.DATA['Lattice'])
@@ -35,52 +36,52 @@ def Plattice():
             if int(lattice[1, i]) == 1:
                 S, R= Tesselations.semi1(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/200)*lattice[4, i]
             if int(lattice[1, i]) == 2:
                 S, R= Tesselations.semi2(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/200)*lattice[4, i]    
             if int(lattice[1, i]) == 3:
                 S, R = Tesselations.triangle(420, 100, Theta = numpy.sqrt(3))
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
             if int(lattice[1, i]) == 4:
                 S, R= Tesselations.semi1(300, 100, 1.22499)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
             if int(lattice[1, i])== 4:
                 S, R= Tesselations.semi1(300, 100, 1.22499)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
             if int(lattice[1, i]) == 5:
                 S, R= Tesselations.semi1(300, 100, 1.35)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i]        
             if int(lattice[1, i]) == 6:
                 S, R= Tesselations.semi6(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
             if int(lattice[1, i]) == 7:
                 S, R= Tesselations.semi3(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
             if int(lattice[1, i]) == 8:
                 S, R= Tesselations.semi4(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
             if int(lattice[1, i]) == 9:
                 S, R= Tesselations.semi5(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
             S = S[0:fixl,:]
             R = R[0:fixl]
@@ -132,4 +133,12 @@ def Plattice():
             ax.set_aspect(1)
     plt.show()
     plt.savefig('compare.png')
+    scum = numpy.zeros(len(s))
+    for i in range(len(s)):
+        scum[i] = numpy.sum(s[:i])
+    plt.plot(numpy.arange(0, 100, 1), scum[0:100]/numpy.sum(s))
+    plt.plot(numpy.arange(0, 100, 1), scum[0:100]/numpy.sum(s), 'r.')
+    plt.xticks(numpy.arange(0, 101, 10))
+    plt.yticks(numpy.linspace(0, 1, 11))
+    plt.show()
         
