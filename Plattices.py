@@ -3,6 +3,7 @@ from numpy import linalg as la
 import Data
 import Tesselations
 import matplotlib.pyplot as plt
+import Laguerre
 def Plattice():
     data = Data.DATA
     lattice = numpy.array(Data.DATA['Lattice'])
