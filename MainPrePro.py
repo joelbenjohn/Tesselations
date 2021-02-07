@@ -44,13 +44,13 @@ class MainPrePro:
         self.nitems = [[] for i in range(len(self.nodes))]
         ADDNODE = widgets.Button(description="Add Lattice", layout= widgets.Layout(border = 'solid 1px black'))
         DELNODE = widgets.Button(description="Remove Lattice", layout= widgets.Layout(border = 'solid 1px black'))
-        self.nlabel= widgets.HBox([widgets.Label(value=self.nodetext[j], layout = widgets.Layout(width='65px')) for j in range(len(self.nodetext))])
+        self.nlabel= widgets.HBox([widgets.Label(value=self.nodetext[j], layout = widgets.Layout(width='100px')) for j in range(len(self.nodetext))])
         for i in range(4):
             if(i<len(self.nodes)):
                 self.nitems[i].append(widgets.IntText(value = i+1, disabled = True, layout = widgets.Layout(width='100px')))
                 self.nitems[i].append(widgets.Dropdown(options = self.minp, value = i+1, layout = widgets.Layout(width='100px')))
                 for j in range(2, len(self.nodetext)):
-                    self.nitems[i].append(widgets.FloatText(value=self.nodes[i, j], layout = widgets.Layout(width='65px')))
+                    self.nitems[i].append(widgets.FloatText(value=self.nodes[i, j], layout = widgets.Layout(width='100px')))
                 # self.nitems[i].append(widgets.Text(value = '1, 50, 100'))
                 self.node[i] = widgets.HBox(self.nitems[i])
         self.noder0 = widgets.VBox([self.node[j] for j in range(4)])
@@ -94,22 +94,22 @@ class MainPrePro:
         self.ien1r0.children = tuple(del_row)
 
     def fsubmit(self, b):
-        self.xn = np.zeros((2, len(self.noder0.children)))
-        self.idb = np.zeros((2, len(self.noder0.children)))
+        self.xn = np.zeros((5, len(self.noder0.children)))
+        # self.idb = np.zeros((2, len(self.noder0.children)))
         # self.f = np.zeros((2, len(self.noder0.children)))
         # self.g = np.zeros((self.dims, len(self.noder0.children)))
         for j in range(len(self.noder0.children)):
-            for i in range(2):
-                self.xn[i, j] = self.noder0.children[j].children[i+1].value
-                self.idb[i, j] = self.noder0.children[j].children[i+1+2].value
+            for i in range(5):
+                self.xn[i, j] = self.noder0.children[j].children[i].value
+                # self.idb[i, j] = self.noder0.children[j].children[i+1+2].value
                 # self.f[i, j] = self.noder0.children[j].children[i+1+2*2].value
                 # self.g[i, j] = self.noder0.children[j].children[i+1+7].value
         self.ien = np.zeros((5, len(self.ien1r0.children)))
         # self.A = np.zeros(len(self.ien1r0.children))
         # self.E = np.zeros(len(self.ien1r0.children))
         for j in range(len(self.ien1r0.children)):
-            for i in range(4):
-                self.ien[i, j] = self.ien1r0.children[j].children[i+1].value
+            for i in range(5):
+                self.ien[i, j] = self.ien1r0.children[j].children[i].value
             # self.E[j] = self.ien1r0.children[j].children[3].value
             # self.A[j] = self.ien1r0.children[j].children[4].value
         # self.nsd = self.dims
@@ -117,7 +117,7 @@ class MainPrePro:
         # self.nen = self.minp[2]
 
         Data.DATA['Lattice'] = self.xn
-        Data.DATA['Perturb'] = self.idb
+        # Data.DATA['Perturb'] = self.idb
         Data.DATA['Plattice'] = self.ien
         # Data.DATA['SVD'] = self.f
         # Data.DATA['Plot'] = self.g
