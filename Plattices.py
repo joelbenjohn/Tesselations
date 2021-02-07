@@ -49,11 +49,6 @@ def Plattice():
                 for g in range(len(S)):
                     S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
-            if int(lattice[1, i]) == 4:
-                S, R= Tesselations.semi1(300, 100, 1.22499)
-                for g in range(len(S)):
-                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)])*lattice[3, i]
-                    R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
             if int(lattice[1, i])== 4:
                 S, R= Tesselations.semi1(300, 100, 1.22499)
                 for g in range(len(S)):
@@ -105,7 +100,7 @@ def Plattice():
         matrx['1'] = numpy.dot(U[:, 0:k], numpy.dot(S1[0:k, 0:k], Vt[0:k, :]))
         for i in range(3):
             start = ranges[str(int(P_lattice[0, j]))][0]
-            index = start + int(P_lattice[2+i, j])
+            index = start + int(P_lattice[2+i, j])-1
             S = numpy.zeros((length, 2))
             R = numpy.zeros(length)
             ax = fig4.add_subplot(spec4[j, i])
@@ -119,19 +114,19 @@ def Plattice():
                         S[g, 0] = numpy.real(matrx[str(z)][index, g])
                         S[g, 1] = numpy.imag(matrx[str(z)][index, g])   
                 R[:] = numpy.real(matrx[str(j)][index, 1*length:2*length])
-            # R = numpy.ones(length)*100*numpy.sqrt(2/400/numpy.sqrt(3))
-            tri_list, V = Laguerre.get_power_triangulation(S, R)
-            # Compute the Voronoi cells
-            voronoi_cell_map = Laguerre.get_voronoi_cells(S, V, tri_list)
-            # Display the result
-            edge_map = Laguerre.display(S, R, tri_list, voronoi_cell_map, 100)
-            elem_con, node_coord = Laguerre.cleanV1(100, V, edge_map)
-            # ax.plot(S[:, 0], S[:, 1], 'r.', markersize = 2)
-            for i in range(len(elem_con)):
-                ax.plot([node_coord[int(elem_con[i, 0]), 0], node_coord[int(elem_con[i, 1]), 0]], [node_coord[int(elem_con[i, 0]), 1], node_coord[int(elem_con[i, 1]), 1]], col[z], linewidth = 1)
-            ax.set_xlim(numpy.mean(S[:, 0])-1.8*numpy.std(S[:, 0]), numpy.mean(S[:, 0])+1.8*numpy.std(S[:, 0]))
-            ax.set_ylim(numpy.mean(S[:, 1])-1.8*numpy.std(S[:, 1]), numpy.mean(S[:, 1])+1.8*numpy.std(S[:, 1]))
-            ax.set_aspect(1)
+                # R = numpy.ones(length)*100*numpy.sqrt(2/400/numpy.sqrt(3))
+                tri_list, V = Laguerre.get_power_triangulation(S, R)
+                # Compute the Voronoi cells
+                voronoi_cell_map = Laguerre.get_voronoi_cells(S, V, tri_list)
+                # Display the result
+                edge_map = Laguerre.display(S, R, tri_list, voronoi_cell_map, 100)
+                elem_con, node_coord = Laguerre.cleanV1(100, V, edge_map)
+                # ax.plot(S[:, 0], S[:, 1], 'r.', markersize = 2)
+                for i in range(len(elem_con)):
+                    ax.plot([node_coord[int(elem_con[i, 0]), 0], node_coord[int(elem_con[i, 1]), 0]], [node_coord[int(elem_con[i, 0]), 1], node_coord[int(elem_con[i, 1]), 1]], col[z], linewidth = 1)
+                ax.set_xlim(numpy.mean(S[:, 0])-1.8*numpy.std(S[:, 0]), numpy.mean(S[:, 0])+1.8*numpy.std(S[:, 0]))
+                ax.set_ylim(numpy.mean(S[:, 1])-1.8*numpy.std(S[:, 1]), numpy.mean(S[:, 1])+1.8*numpy.std(S[:, 1]))
+                ax.set_aspect(1)
     plt.show()
     plt.savefig('compare.png')
     scum = numpy.zeros(len(s))
