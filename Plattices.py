@@ -113,7 +113,7 @@ def Plattice():
                     if z == 1:
                         S[g, 0] = numpy.real(matrx[str(z)][index, g])
                         S[g, 1] = numpy.imag(matrx[str(z)][index, g])   
-                R[:] = numpy.real(matrx[str(j)][index, 1*length:2*length])
+                R[:] = numpy.real(matrx[str(z)][index, 1*length:2*length])
                 # R = numpy.ones(length)*100*numpy.sqrt(2/400/numpy.sqrt(3))
                 tri_list, V = Laguerre.get_power_triangulation(S, R)
                 # Compute the Voronoi cells
