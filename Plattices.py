@@ -31,53 +31,53 @@ def Plattice():
         if i>=1:
             ranges[str(int(lattice[1, i-1]))].append(ranges[str(int(lattice[1, i]))][0]+int(lattice[2, i-1])-1)
             ranges[str(int(lattice[1, i]))].append(ranges[str(int(lattice[1, i-1]))][1]+1)
-        for j in range(lattice[2, i]):
-            if lattice[1, i] == 1:
+        for j in range(int(lattice[2, i])):
+            if int(lattice[1, i]) == 1:
                 S, R= Tesselations.semi1(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/200)*lattice[4, i]
-            if lattice[1, i] == 2:
+            if int(lattice[1, i]) == 2:
                 S, R= Tesselations.semi2(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/200)*lattice[4, i]    
-            if lattice[1, i] == 3:
+            if int(lattice[1, i]) == 3:
                 S, R = Tesselations.triangle(420, 100, Theta = numpy.sqrt(3))
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
-            if lattice[1, i] == 4:
+            if int(lattice[1, i]) == 4:
                 S, R= Tesselations.semi1(300, 100, 1.22499)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/150), numpy.random.normal(0.001,R[g]*j/150)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/300)*lattice[4, i] 
-            if lattice[1, i] == 4:
+            if int(lattice[1, i])== 4:
                 S, R= Tesselations.semi1(300, 100, 1.22499)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
-            if lattice[1, i] == 5:
+            if int(lattice[1, i]) == 5:
                 S, R= Tesselations.semi1(300, 100, 1.35)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i]        
-            if lattice[1, i] == 6:
+            if int(lattice[1, i]) == 6:
                 S, R= Tesselations.semi6(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
-            if lattice[1, i] == 7:
+            if int(lattice[1, i]) == 7:
                 S, R= Tesselations.semi3(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
-            if lattice[1, i] == 8:
+            if int(lattice[1, i]) == 8:
                 S, R= Tesselations.semi4(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/400)*lattice[4, i] 
-            if lattice[1, i] == 9:
+            if int(lattice[1, i]) == 9:
                 S, R= Tesselations.semi5(300, 100, 1)
                 for g in range(len(S)):
                     S[g,:] += [numpy.random.normal(0.001, R[g]*j/300), numpy.random.normal(0.001,R[g]*j/300)]*lattice[3, i]
