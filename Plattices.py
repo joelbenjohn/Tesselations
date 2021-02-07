@@ -98,13 +98,13 @@ def Plattice():
         s1 = 0
         for g in range(len(s)):
             s1 += s[g]/numpy.sum(s)
-            if s1>=P_lattice[2, j]/100:
+            if s1>=P_lattice[1, j]/100:
                 k=g+1
                 break
         matrx['1'] = numpy.dot(U[:, 0:k], numpy.dot(S1[0:k, 0:k], Vt[0:k, :]))
         for i in range(3):
-            start = ranges[str(int(P_lattice[1, j]))][0]
-            index = start + int(P_lattice[3+i, j])
+            start = ranges[str(int(P_lattice[0, j]))][0]
+            index = start + int(P_lattice[2+i, j])
             S = numpy.zeros((length, 2))
             R = numpy.zeros(length)
             ax = fig4.add_subplot(spec4[math.floor(j), i])
