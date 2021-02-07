@@ -30,7 +30,7 @@ def Plattice():
         if i==0:
             ranges[str(int(lattice[1, i]))].append(0)
         if i>=1:
-            ranges[str(int(lattice[1, i-1]))].append(ranges[str(int(lattice[1, i]))][0]+int(lattice[2, i-1])-1)
+            ranges[str(int(lattice[1, i-1]))].append(ranges[str(int(lattice[1, i-1]))][0]+int(lattice[2, i-1])-1)
             ranges[str(int(lattice[1, i]))].append(ranges[str(int(lattice[1, i-1]))][1]+1)
         for j in range(int(lattice[2, i])):
             if int(lattice[1, i]) == 1:
