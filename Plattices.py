@@ -4,8 +4,8 @@ import Data
 import Tesselations
 def Plattice():
     data = Data.DATA
-    lattice = Data.DATA['Lattice']
-    P_lattice = Data.DATA['Plattice']
+    lattice = numpy.array(Data.DATA['Lattice'])
+    P_lattice = numpy.array(Data.DATA['Plattice'])
     S, R = Tesselations.semi1(300, 100, 1)
     fixl = len(S)
     length = fixl
