@@ -89,7 +89,7 @@ def Plattice():
             Si = numpy.vectorize(complex)(S[:, 0], S[:, 1])
             matrx['0']= numpy.append(matrx['0'], [numpy.append(Si,R, axis = 0)], axis = 0)
     U, s, Vt = la.svd(matrx['0'], full_matrices=False)
-    fig4 = plot.figure(figsize = (10, 2.5*len(P_lattice.T)), constrained_layout=True)
+    fig4 = plt.figure(figsize = (10, 2.5*len(P_lattice.T)), constrained_layout=True)
     fig4.set_constrained_layout_pads(w_pad=4/72, h_pad=4/72, hspace=0, wspace=0)
     spec4 = fig4.add_gridspec(ncols=3, nrows=len(P_lattice.T))
     S1 = numpy.diag(s)
