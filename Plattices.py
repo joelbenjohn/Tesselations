@@ -5,7 +5,7 @@ def Plattice():
     data = Data.DATA
     lattice = Data.DATA['Lattice']
     P_lattice = Data.DATA['Plattice']
-    S, R = semi1(300, 100, 1)
+    S, R = Tesselations.semi1(300, 100, 1)
     fixl = len(S)
     length = fixl
     print(fixl)
