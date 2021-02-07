@@ -1,3 +1,4 @@
+import numpy
 from numpy import linalg as la
 import Data
 import Tesselations
