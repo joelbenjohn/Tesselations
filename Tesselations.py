@@ -155,9 +155,9 @@ def pert(Seeds, Side, w, c, g):
               attempt += 1
   return S, R
 def semi2(Seeds, Side, w):
-  r = Side*numpy.sqrt(2/Seeds/numpy.sqrt(3))
-  n2 = int(Side/r)+1
-  n1 = int(Side*2/r/numpy.sqrt(3))+1
+  r = Side/numpy.sqrt(Seeds)
+  n2 = int(numpy.sqrt(Seeds)+1)
+  n1 = int(numpy.sqrt(Seeds)+1)
   R = numpy.ones((n1+8)*(n2+8))
   S = numpy.zeros(((n1+8)*(n2+8), 2))
   # x = 1
