@@ -74,8 +74,8 @@ def semi1(Seeds, Side, w):
   S = numpy.zeros(((n1+8)*(n2+8), 2))
   # x = 1
   # r = x*(0.5/numpy.tan(pi/12)+1/numpy.sqrt(3))
-  wo = r*w/(1+w)
-  wt = r/(1+w)
+  wo = r*w
+  wt = r
   for i in range(n2+8):
       for j in range(n1+8):
           if (j+1)%2 == 1:
