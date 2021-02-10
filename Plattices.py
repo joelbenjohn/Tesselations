@@ -36,7 +36,7 @@ def Plattice():
             if int(lattice[1, i]) == 1:
                 S, R= Tesselations.semi1(300, 100, 1)
                 for g in range(len(S)):
-                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/1.5/int(lattice[2, i])), numpy.random.normal(0.001,R[g]*j/1.5/int(lattice[2, i])]))*lattice[3, i]
+                    S[g,:] += numpy.array([numpy.random.normal(0.001, R[g]*j/1.5/int(lattice[2, i])), numpy.random.normal(0.001,R[g]*j/1.5/int(lattice[2, i]))])*lattice[3, i]
                     R[g] += numpy.random.normal(0.001, R[g]*j/2/int(lattice[2, i]))*lattice[4, i]
             if int(lattice[1, i]) == 2:
                 S, R= Tesselations.semi2(300, 100, 1)
