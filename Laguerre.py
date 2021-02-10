@@ -297,12 +297,10 @@ def cleanV1(Side, V, edge_map):
     key = V2[i, 0]
     revmap[key] = i
   elem_con = numpy.empty((0, 2))
-  print(len(edge_map.keys()))
   for edge in edge_map.keys():
     if edge[0] in revmap:
       if edge[1] in revmap:
         elem_con = numpy.append(elem_con, [[revmap[edge[0]], revmap[edge[1]]]], axis =0)
-  print(len(elem_con))
   return elem_con, V2[:, 1:]
 
 def write_to_text(array, name):
@@ -319,13 +317,11 @@ def seed_pert(S, R, c, w):
   for i in range(0,len(S)):
     count = 0
     r = Side/numpy.sqrt(Seeds)
-    print(r)
     attempt = 0
     while count == 0:
       New = S[i, :] + numpy.random.normal(0, c*r/4, (1, 2))
       newr = R[i] + R[i]*numpy.random.normal(0, w*r/4, (1, 2))
       attempt+=1
-      print(i, attempt, New)
       if attempt>200:
         count = 1
       if numpy.all(numpy.sum((S-New)**2, axis = 1) - newr>0):
@@ -336,12 +332,10 @@ def weight_pert(S, R):
   for i in range(0,len(S)):
     count = 0
     r = Side/numpy.sqrt(Seeds)
-    print(r)
     attempt = 0
     while count == 0:
       New = S[i, :] + numpy.random.normal(0, r/4, (1, 2))
       attempt+=1
-      print(i, attempt, New)
       if attempt>200:
         count = 1
       if numpy.all(numpy.sum((S-New)**2, axis = 1) - 0.5>0):

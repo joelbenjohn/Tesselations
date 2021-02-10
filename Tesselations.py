@@ -109,9 +109,7 @@ def pert(Seeds, Side, w, c, g):
           if (j+1)%2 == 1:
             count = 0
             attempt = 0 
-            print(len(S), attempt)
             while (count == 0):
-              print(len(S), attempt)
               s0 = r*numpy.sin(pi/3)*j - 4*r*numpy.sin(pi/3) + numpy.random.normal(0, c*r/32)
               s1 = r*i - 4*r + numpy.random.normal(0, c*r/32)
               if (i+1)%3 == 1 or (i+1)%3 == 0:
@@ -133,7 +131,6 @@ def pert(Seeds, Side, w, c, g):
           if (j+1)%2 == 0:
             count = 0
             attempt = 0 
-            print(len(S), attempt)
             while (count == 0):
               s0 = r*numpy.sin(pi/3)*j - 4*r*numpy.sin(pi/3) + numpy.random.normal(0, c*r/32)
               s1 = 0.5*r + r*i - 4*r + numpy.random.normal(0, c*r/32)
@@ -310,7 +307,6 @@ def mono(Seeds, Side, k):
   m = numpy.sqrt(Side**2/Seeds/numpy.pi)
   R1 = numpy.abs(numpy.array(numpy.random.normal(m, k, (int(1.96*Seeds*1.5)))))
   R11 = numpy.sort(R1)[::-1]
-  print(R11)
   count1= 0
   R0 = [R11[0]]
   nseed = 0
@@ -321,7 +317,6 @@ def mono(Seeds, Side, k):
     # R0 = numpy.random.rand(1)*7
     # R0 = numpy.array([3])
 
-    print(len(S), count, R0, k)
     if len(S)==0:
       S0 = [[-Side/5, -Side/5.01]]
       S = numpy.append(S, S0, axis = 0)
@@ -378,7 +373,6 @@ def poly(Seeds, Side, Centers, Size):
     d[i] = index
   index = reduce(numpy.intersect1d, (d[i] for i in range(Centers)))
   S = S0[index, :]
-  print(S.shape, S0.shape)
   R = numpy.ones(len(index))
   siz = (numpy.random.rand(Centers)+1)*Size
   S=numpy.append(S, S1, axis = 0)
@@ -396,7 +390,6 @@ def voronoi1(Seeds, Side, dev):
     if (len(S)==0):
       S = numpy.append(S, numpy.array([[-2*x, -2*x]]), axis = 0)
       R = numpy.append(R, numpy.array([x/4]), axis = 0)
-    print(S[len(S)-1, :])
     a = (S[len(S)-1, :] + numpy.array([x, 0] + numpy.random.normal(0, dev, (1, 2))))
     b = (numpy.array([-2*x, S[len(S)-1, 1]]) + numpy.array([0, x] + numpy.random.normal(0, dev, (1, 2))))
     if S[len(S)-1, 0]< Side+2*x:
@@ -412,7 +405,6 @@ def voronoi1(Seeds, Side, dev):
         prev[0] = len(S)-1-prev[0]
         S0 = (numpy.array([-2*x, S[len(S)-prev[0], 1]]) + numpy.array([0, x] + numpy.random.normal(0, dev, (1, 2))))
       
-    print(S0)
     if numpy.all(numpy.sqrt(numpy.sum((S0-S)**2, axis = 1))-R- x/4>0):
       S = numpy.append(S, S0, axis = 0)
       R = numpy.append(R, numpy.array([x/4]), axis = 0)

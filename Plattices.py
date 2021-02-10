@@ -11,7 +11,6 @@ def Plattice():
     S, R = Tesselations.semi1(300, 100, 1)
     fixl = len(S)
     length = fixl
-    print(fixl)
     matrx = {
         '0': numpy.empty((0, 2*len(S)), dtype = complex),
         '1': numpy.empty((0, 2*len(S)), dtype = complex),
@@ -137,4 +136,5 @@ def Plattice():
     plt.xticks(numpy.arange(0, 101, 10))
     plt.yticks(numpy.linspace(0, 1, 11))
     plt.show()
+    return U, s, Vt, matrx['0'], scum
         
