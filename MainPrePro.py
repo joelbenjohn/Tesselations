@@ -14,7 +14,7 @@ def prevals():
 class MainPrePro:
     def prevals(self):
         lattices = [('Honeycomb', 1), ('Square', 2), ('Triangle', 3), ('3.6.3.6', 4), ('3.12.12', 5), ('3.3.3.4.4', 6), ('3.4.6.4', 7), ('4.6.12', 8), ('4.8.8', 9)]
-        nodes =np.array([[1, 'Honeycomb', 100, 1, 1, 1, 1, 0, 0], [2, 'Square', 100, 1, 1, 1, 1, 0, 0], [3, 'Triangle', 100, 1, 1, 1, 1, 0, 0], [4, '3.6.3.6', 100, 1, 1, 1, 1, 0, 0]])
+        nodes =np.array([[1, 'Honeycomb', 100, 1, 1, 1, 1, 0, 0], [2, 'Square', 100, 1, 1, 1, 1, 0, 0], [3, 'Triangle', 100, 1, 1, 1, 1, 0, 0], [4, '3.6.3.6', 100, 1, 1, 1, 1, 0, 0], [5, '3.12.12', 100, 1, 1, 1, 1, 0, 0], [6, '3.3.3.4.4', 100, 1, 1, 1, 1, 0, 0], [7, '3.4.6.4', 100, 1, 1, 1, 1, 0, 0], [8, '4.6.12', 100, 1, 1, 1, 1, 0, 0], [9, '4.8.8', 100, 1, 1, 1, 1, 0, 0] ])
         ien = np.array([[1, 87, 1, 50, 100], [2, 87, 1, 50, 100], [3, 87, 1, 50, 100]])
         return lattices, nodes, ien
     def Mesh(self, minp):
@@ -27,6 +27,11 @@ class MainPrePro:
         return self.rmesh, self.msubmit
     
     def add_node(self, b):
+        self.nitems.append([])
+        self.nitems[len(self.nitems)].append(widgets.IntText(value = len(self.nitems)+1, disabled = True, layout = widgets.Layout(width='100px')))
+        self.nitems[len(self.nitems)].append(widgets.Dropdown(options = self.minp, value = len(self.nitems)+1, layout = widgets.Layout(width='100px')))
+        for j in range(2, len(self.nodetext)):
+            self.nitems[len(self.nitems)].append(widgets.FloatText(value=self.nodes[len(self.nitems), j], layout = widgets.Layout(width='100px')))
         New_row = widgets.HBox(self.nitems[len(self.nitems)-1])
         self.noder0.children = self.noder0.children + (New_row,)
     def del_node(self, b):
@@ -40,13 +45,13 @@ class MainPrePro:
         self.nodetext = ['#','Lattice','Number', 'Perturb', 'Polydisperse',]
         self.nodes = nodes
         self.minp = minp
-        self.node = [[] for i in range(len(self.nodes))]
-        self.nitems = [[] for i in range(len(self.nodes))]
+        self.node = [[] for i in range(4)]
+        self.nitems = [[] for i in range(4)]
         ADDNODE = widgets.Button(description="Add Lattice", layout= widgets.Layout(border = 'solid 1px black'))
         DELNODE = widgets.Button(description="Remove Lattice", layout= widgets.Layout(border = 'solid 1px black'))
         self.nlabel= widgets.HBox([widgets.Label(value=self.nodetext[j], layout = widgets.Layout(width='100px')) for j in range(len(self.nodetext))])
         for i in range(4):
-            if(i<len(self.nodes)):
+            if(i<4):
                 self.nitems[i].append(widgets.IntText(value = i+1, disabled = True, layout = widgets.Layout(width='100px')))
                 self.nitems[i].append(widgets.Dropdown(options = self.minp, value = i+1, layout = widgets.Layout(width='100px')))
                 for j in range(2, len(self.nodetext)):
