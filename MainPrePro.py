@@ -28,10 +28,10 @@ class MainPrePro:
     
     def add_node(self, b):
         self.nitems.append([])
-        self.nitems[len(self.nitems)].append(widgets.IntText(value = len(self.nitems)+1, disabled = True, layout = widgets.Layout(width='100px')))
-        self.nitems[len(self.nitems)].append(widgets.Dropdown(options = self.minp, value = len(self.nitems)+1, layout = widgets.Layout(width='100px')))
+        self.nitems[len(self.nitems)-1].append(widgets.IntText(value = len(self.nitems), disabled = True, layout = widgets.Layout(width='100px')))
+        self.nitems[len(self.nitems)-1].append(widgets.Dropdown(options = self.minp, value = len(self.nitems), layout = widgets.Layout(width='100px')))
         for j in range(2, len(self.nodetext)):
-            self.nitems[len(self.nitems)].append(widgets.FloatText(value=self.nodes[len(self.nitems), j], layout = widgets.Layout(width='100px')))
+            self.nitems[len(self.nitems)-1].append(widgets.FloatText(value=self.nodes[len(self.nitems)-1, j], layout = widgets.Layout(width='100px')))
         New_row = widgets.HBox(self.nitems[len(self.nitems)-1])
         self.noder0.children = self.noder0.children + (New_row,)
     def del_node(self, b):
